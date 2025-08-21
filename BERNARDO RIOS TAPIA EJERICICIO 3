@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int encontrarMaximo(int *arreglo, int longitud) {
+    int *maximo = arreglo;
+
+    for (int *i = arreglo + 1; i < arreglo + longitud; ++i) {
+        if (*i > *maximo) {
+            maximo = i;
+        }
+    }
+
+    return *maximo;
+}
+
+int main() {
+    int numeros[] = {15, 8, 27, 4, 12};
+    int longitud = sizeof(numeros) / sizeof(numeros[0]);
+
+    int maximo = encontrarMaximo(numeros, longitud);
+
+    cout << "El numero maximo en el arreglo es: " << maximo << endl;
+
+    return 0;
+}
