@@ -1,0 +1,90 @@
+buscar - contar elementos - sumar
+1.-
+#include <iostream>
+using namespace std;
+
+const int FILAS = 4;
+const int COLUMNAS = 5;
+
+int recursivobuscarr(int matriz[FILAS][COLUMNAS], int fila, int columna, int valorbuscado) 
+{
+
+    if (matriz[fila][columna] == valorbuscado)
+        return valorbuscado;
+
+    if (columna + 1 < COLUMNAS)
+        return recursivobuscarr(matriz, fila, columna + 1, valorbuscado);
+
+    if (fila + 1 < FILAS)
+        return recursivobuscarr(matriz, fila + 1, 0, valorbuscado);
+    return -1;
+}
+
+int main() {
+
+    int valorbuscado;
+
+    cout << "Valor buscado, por favor: "<<endl;
+    cin >> valorbuscado;
+
+    int matriz[FILAS][COLUMNAS] = {
+        {12, 7, 9, 21, 5},
+        {3, 18, 25, 14, 11},
+        {6, 8, 19, 4, 16},
+        {20, 1, 10, 13, 17}
+    };
+
+ 
+
+    int resultado = recursivobuscarr(matriz, 0, 0, valorbuscado);
+    if (resultado != -1)
+    {
+        cout << "Valor encontrado: " << resultado << endl;
+    }
+    else
+    {
+        cout << "Valor no encontrado." << endl;
+    }
+        
+    return 0;
+}
+
+2.-
+
+#include <iostream>
+using namespace std;
+
+const int FILAS = 4;
+const int COLUMNAS = 5;
+
+
+
+int contarelementosdematriz(int matriz[FILAS][COLUMNAS], int fila, int columna, int contador)
+{
+    if (fila == FILAS - 1 && columna == COLUMNAS - 1)
+        return contador+1;
+
+    if (columna + 1 < COLUMNAS)
+        return contarelementosdematriz(matriz, fila, columna + 1, contador+1);
+
+    if (fila + 1 < FILAS)
+        return contarelementosdematriz(matriz, fila + 1, 0, contador+1);
+}
+
+int main() {
+
+    int contador=1;
+
+    int matriz[FILAS][COLUMNAS] = {
+        {12, 7, 9, 21, 5},
+        {3, 18, 25, 14, 11},
+        {6, 8, 19, 4, 16},
+        {20, 1, 10, 13, 17}
+    };
+
+    int total = contarelementosdematriz(matriz, 0, 0, 0);
+
+    cout << "Numero total de elementos en la matriz: " << total << endl;
+
+    return 0;
+}
