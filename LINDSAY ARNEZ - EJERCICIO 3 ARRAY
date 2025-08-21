@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int size;
+	cout << "\nIngrese el tamanio del array: ";
+	cin >> size;
+	int* arrDyn = new int[size];
+
+	for (int i = 0; i < size; i++) {
+		arrDyn[i] = 10;
+	}
+
+	cout << "Array Dinamico: ";
+	for (int i = 0; i < size; i++) {
+		cout << arrDyn[i] << " ";
+	}
+	cout << endl;
+
+	int suma = 0;
+	for (int i = 0; i < size; i++) {
+		suma = suma + arrDyn[i];
+	}
+
+	cout << "La suma de los numeros es: " << suma << endl;
+
+	delete[] arrDyn;
+}
