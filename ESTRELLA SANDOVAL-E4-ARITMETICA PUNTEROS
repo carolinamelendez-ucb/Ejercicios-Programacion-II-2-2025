@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int tamanio;
+    int* array, * punteroInicio, * punteroFin, temporal;
+
+    cout << "Ingrese el tamaño del arreglo: ";
+    cin >> tamanio;
+    array = new int[tamanio];
+
+    cout << "Ingrese " << tamanio << " elementos:" << endl;
+    for (int* puntero = array; puntero < array + tamanio; puntero++) 
+    {
+        cin >> *puntero;
+    }
+
+    cout << "Array normal: ";
+    for (int* puntero = array; puntero < array + tamanio; puntero++) 
+    {
+        cout << *puntero << " ";
+    }
+    cout << endl;
+
+    punteroInicio = array;             
+    punteroFin = array + tamanio - 1;   
+
+    while (punteroInicio < punteroFin)
+    {
+        temporal = *punteroInicio;
+        *punteroInicio = *punteroFin;
+        *punteroFin = temporal;
+
+        punteroInicio++;
+        punteroFin--;
+    }
+
+    cout << "Array invertido: ";
+    for (int* puntero = array; puntero < array + tamanio; puntero++) 
+    {
+        cout << *puntero << " ";
+    }
+    cout << endl;
+
+    delete[] array;
+
+}
