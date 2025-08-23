@@ -1,0 +1,31 @@
+// 23-08-2025.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+//
+
+#include <iostream>
+
+using namespace std;
+
+void invertirArray()
+{
+    int tam;
+    cout << "Ingrese la cantidad de datos del arreglo: ";
+    cin >> tam;
+    int* arr = new int[tam];
+    for (int a=0;a<tam;a++)
+    {
+        cout << "Ingrese el dato " << a+1 << " del arreglo: ";
+        cin >> *(arr+a);
+    }
+    for (int i=tam-1;i>=0;i--)
+    {
+        cout << *(arr+i) << ", ";
+    }
+    cout << endl;
+    delete[] arr;
+}
+
+int main()
+{
+    invertirArray();
+}
+
