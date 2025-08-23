@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size;
+    cout << "Ingrese el tamamo del arreglo: ";
+    cin >> size;
+
+    int* array = new int[size];
+
+    for (int i = 0; i < size; i++) {
+        cout << "Elemento " << i + 1 << ": ";
+        cin >> *(array + i);
+    }
+
+    cout << "Arreglo normal: ";
+    for (int i = 0; i < size; i++) {
+        cout <<*(array + i) << " ";
+    }
+    cout << endl;
+
+    int* inicio = array;
+    int* fin = array + size - 1;
+
+    while (inicio < fin) {
+        int aux = *inicio;
+        *inicio =*fin;
+        *fin = aux;
+
+        inicio++;
+        fin--;
+    }
+
+    cout << "Arreglo invertido: ";
+    for (int i = 0; i < size; i++) {
+        cout <<*(array + i) << " ";
+    }
+    cout << endl;
+
+    delete[] array;
+
+    return 0;
+}
