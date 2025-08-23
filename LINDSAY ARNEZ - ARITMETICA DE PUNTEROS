@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int tamArreglo;
+    cout << "Ingrese el tamaño del arreglo: ";
+    cin >> tamArreglo;
+
+    int* arrPtr = new int[tamArreglo];
+
+    cout << "Ingrese los elementos del arreglo:\n";
+    for (int i = 0; i < tamArreglo; i++) {
+        cin >> *(arrPtr + i);
+    }
+
+    cout << "\nArreglo original: ";
+    for (int i = 0; i < tamArreglo; i++) {
+        cout << *(arrPtr + i) << " ";
+    }
+    cout << endl;
+
+    int* inicio = arrPtr;
+    int* fin = arrPtr + tamArreglo - 1;
+    while (inicio < fin) {
+        int temp = *inicio;
+        *inicio = *fin;
+        *fin = temp;
+
+        inicio++;
+        fin--;
+    }
+
+    cout << "Arreglo invertido: ";
+    for (int i = 0; i < tamArreglo; i++) {
+        cout << *(arrPtr + i) << " ";
+    }
+    cout << endl;
+
+    delete[] arrPtr;
+
+    return 0;
+}
