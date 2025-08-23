@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout << "Tamanio del arreglo: ";
+    cin >> n;
+
+    if (n <= 0) 
+    {
+        cout << "Tamanio invalido";
+        return 0;
+    }
+
+    int* a = new int[n];
+
+   
+    cout << "Ingresa " << n << " enteros:";
+    for (int* p = a; p < a + n; ++p) 
+    {
+        cin >> *p;
+    }
+
+    cout << "Original: ";
+    for (int* p = a; p < a + n; ++p)
+    {
+        cout << *p << " ";
+    }
+    
+    int* i = a;
+    int* j = a + n - 1;
+    while (i < j) 
+    {
+        int temp = *i;
+        *i = *j;
+        *j = temp;
+        ++i;
+        --j;
+    }
+
+    cout << "Invertido: ";
+    for (int* p = a; p < a + n; ++p) 
+    {
+        cout << *p << " ";
+    }
+
+    delete[] a; 
+    return 0;
+}
