@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	cout << "escoja un tamaño para el array : " << endl;
+	int size;
+	cin >> size;
+	int* array = new int[size];
+	
+	cout << "escoja ahora " << size << " numeros para que se inviertan su orden : " << endl;
+	int suma = 0;
+
+	for (int i = 0; i < size; i++) {
+		cin >> array[i];
+	}
+	cout << "/";
+	for (int i = 0; i < size; i++) {
+		cout << array[i];
+	}
+	cout << "/";
+	cout << "el array invertido es: " << endl;
+	for (int j = size-1; j >= 0; j--) {
+		cout << array[j];
+	}
+
+	delete[] array;
+}
