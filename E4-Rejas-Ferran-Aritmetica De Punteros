@@ -1,0 +1,43 @@
+// Invertir un arreglo usando SOLO punteros (sin corchetes de indexación [])
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Tamano del arreglo: ";
+    if (!(cin >> n) || n <= 0) {
+        cout << "Tamano invalido.\n";
+        return 0;
+    }
+
+    // Reservamos memoria dinamica
+    int* arr = new int[n];
+
+    // Entrada SIN usar corchetes: *(arr + i)
+    cout << "Ingresa " << n << " enteros:\n";
+    for (int i = 0; i < n; ++i) {
+        cin >> *(arr + i);
+    }
+
+    // Invertir in-place con punteros
+    int* left  = arr;          // apunta al primero
+    int* right = arr + n - 1;  // apunta al ultimo
+    while (left < right) {
+        int tmp = *left;
+        *left   = *right;
+        *right  = tmp;
+        ++left;      // avanza desde el inicio
+        --right;     // retrocede desde el final
+    }
+
+    // Salida SIN corchetes
+    cout << "Arreglo invertido: ";
+    for (int i = 0; i < n; ++i) {
+        cout << *(arr + i) << (i + 1 < n ? ' ' : '\n');
+    }
+
+    // Liberar memoria
+    delete[] arr;
+    return 0;
+}
